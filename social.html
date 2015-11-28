@@ -45,6 +45,12 @@ tumblr:function(){
 twitter:function(){
 	window.open('//twitter.com/intent/tweet?text=' + this.t + '&url=' + this.u , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 },
+buffer:function(){
+	window.open('//bufferapp.com/add?text=' + this.t + '&url='+ this.u , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
+},
+reddit:function(){
+	window.open('//reddit.com/submit?url=' + this.u + '&title=' + this.t  , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
+},
 printpage:function(){
 	window.print();
 }
@@ -53,6 +59,8 @@ printpage:function(){
 
 
 </script>
+
+<h2>Added</h2>
 <ol>
 <li><a onclick="socialshare.twitter();">Twitter</a></li>
 <li><a onclick="socialshare.facebookshare();">facebookshare</a></li>
@@ -63,8 +71,12 @@ printpage:function(){
 <li><a onclick="socialshare.tumblr();">tumblr</a></li>
 <li><a onclick="socialshare.delicious();">delicious</a></li>
 <li><a onclick="socialshare.digg();">digg</a></li>
+<li><a onclick="socialshare.buffer();">buffer</a></li>
+<li><a onclick="socialshare.reddit();">reddit</a></li>
 <li><a onclick="socialshare.printpage();">print page</a></li>
-
+</ol>
+<h2>Coming Soon</h2>
+<ol>
 </ol>
 
 
