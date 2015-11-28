@@ -1,0 +1,67 @@
+<html>
+<head></head>
+<body>
+<script type="text/javascript">
+
+var socialshare = {
+u:encodeURIComponent(location.href), // URL
+t:encodeURIComponent(document.title), // page title
+d:encodeURIComponent(this.description),  // description
+i:'',  // image url
+description:function(){
+	var meta = document.getElementsByTagName('meta');
+	for (var m = 0; m < meta.length; m++) {
+		if (meta[m].name.toLowerCase() == 'description') {
+			return meta[m].content;
+		}
+	}
+	return '';
+},
+delicious: function(){
+	window.open('//delicious.com/save?url=' + u + '&title=' + t + '&note=' + d , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=710, height=660, toolbar=0, status=0');
+},
+digg:function(){
+	window.open('//digg.com/submit?url=' + u );
+},
+facebookshare:function(){
+	var fbQuery = 'u=' + u;
+	window.open('//www.facebook.com/sharer.php?m2w&' + fbQuery , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
+},
+googleplus(){
+	window.open('//plus.google.com/share?url=' + u , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
+},
+linkedin:function(){
+	window.open('//www.linkedin.com/shareArticle?mini=true&url=' + u + '&title=' + t , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=600, height=400, toolbar=0, status=0');
+},
+pinterest:function(){
+	window.open('//pinterest.com/pin/create/button/?url=' + u + '&media=' + i + '&description=' + t , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=600, height=300, toolbar=0, status=0');
+},
+stumbleupon:function(){
+	window.open('//www.stumbleupon.com/submit?url=' + u + '&title=' + t);
+},
+tumblr:function(){
+	window.open('//www.tumblr.com/share?v=3&u=' + u + '&t=' + t + '&s=' + d , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=450, height=440, toolbar=0, status=0');
+},
+twitter:function(){
+	window.open('//twitter.com/intent/tweet?text=' + this.t + '&url=' + this.u , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
+},
+printpage:function(){
+	window.print();
+}
+
+}
+
+socialshare.twitter();
+</script>
+
+
+            u = encodeURIComponent(u);
+            t = encodeURIComponent(t);
+            t = t.replace(/\'/g, '%27');
+            i = encodeURIComponent(i);
+            d = encodeURIComponent(d);
+            d = d.replace(/\'/g, '%27');
+            
+
+</body>
+</html>
