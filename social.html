@@ -5,8 +5,8 @@
 
 var socialshare = {
 u:encodeURIComponent(location.href), // URL
-t:encodeURIComponent(document.title), // page title
-d:encodeURIComponent(this.description),  // description
+t:encodeURIComponent(document.title).replace(/\'/g, '%27'), // page title
+d:encodeURIComponent(this.description).replace(/\'/g, '%27'),  // description
 i:'',  // image url
 description:function(){
 	var meta = document.getElementsByTagName('meta');
@@ -18,29 +18,29 @@ description:function(){
 	return '';
 },
 delicious: function(){
-	window.open('//delicious.com/save?url=' + u + '&title=' + t + '&note=' + d , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=710, height=660, toolbar=0, status=0');
+	window.open('//delicious.com/save?url=' + this.u + '&title=' + this.t + '&note=' + this.d , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=710, height=660, toolbar=0, status=0');
 },
 digg:function(){
-	window.open('//digg.com/submit?url=' + u );
+	window.open('//digg.com/submit?url=' + this.u );
 },
 facebookshare:function(){
 	var fbQuery = 'u=' + u;
-	window.open('//www.facebook.com/sharer.php?m2w&' + fbQuery , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
+	window.open('//www.facebook.com/sharer.php?m2w&' + this.fbQuery , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 },
 googleplus(){
-	window.open('//plus.google.com/share?url=' + u , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
+	window.open('//plus.google.com/share?url=' + this.u , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 },
 linkedin:function(){
-	window.open('//www.linkedin.com/shareArticle?mini=true&url=' + u + '&title=' + t , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=600, height=400, toolbar=0, status=0');
+	window.open('//www.linkedin.com/shareArticle?mini=true&url=' + this.u + '&title=' + this.t , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=600, height=400, toolbar=0, status=0');
 },
 pinterest:function(){
-	window.open('//pinterest.com/pin/create/button/?url=' + u + '&media=' + i + '&description=' + t , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=600, height=300, toolbar=0, status=0');
+	window.open('//pinterest.com/pin/create/button/?url=' + this.u + '&media=' + this.i + '&description=' + this.t , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=600, height=300, toolbar=0, status=0');
 },
 stumbleupon:function(){
-	window.open('//www.stumbleupon.com/submit?url=' + u + '&title=' + t);
+	window.open('//www.stumbleupon.com/submit?url=' + this.u + '&title=' + this.t);
 },
 tumblr:function(){
-	window.open('//www.tumblr.com/share?v=3&u=' + u + '&t=' + t + '&s=' + d , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=450, height=440, toolbar=0, status=0');
+	window.open('//www.tumblr.com/share?v=3&u=' + this.u + '&t=' + this.t + '&s=' + this.d , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=450, height=440, toolbar=0, status=0');
 },
 twitter:function(){
 	window.open('//twitter.com/intent/tweet?text=' + this.t + '&url=' + this.u , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
@@ -51,17 +51,22 @@ printpage:function(){
 
 }
 
-socialshare.twitter();
+
 </script>
+<ol>
+<li><a onclick="socialshare.twitter();">Twitter</a></li>
+<li><a onclick="socialshare.facebookshare();">facebookshare</a></li>
+<li><a onclick="socialshare.googleplus();">googleplus</a></li>
+<li><a onclick="socialshare.linkedin();">linkedin</a></li>
+<li><a onclick="socialshare.pinterest();">pinterest</a></li>
+<li><a onclick="socialshare.stumbleupon();">stumbleupon</a></li>
+<li><a onclick="socialshare.tumblr();">tumblr</a></li>
+<li><a onclick="socialshare.delicious();">delicious</a></li>
+<li><a onclick="socialshare.digg();">digg</a></li>
+<li><a onclick="socialshare.printpage();">print page</a></li>
 
+</ol>
 
-            u = encodeURIComponent(u);
-            t = encodeURIComponent(t);
-            t = t.replace(/\'/g, '%27');
-            i = encodeURIComponent(i);
-            d = encodeURIComponent(d);
-            d = d.replace(/\'/g, '%27');
-            
 
 </body>
 </html>
