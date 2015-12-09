@@ -24,7 +24,8 @@ var socialshare = {
 		window.open('//digg.com/submit?url=' + this.u );
 	},
 	facebookshare:function(){
-		var fbQuery = 'u=' + u;
+		var fbQuery = 'u=' + this.u;
+		if (i != ''){fbQuery = 's=100&p[url]=' + this.u + '&p[title]=' + this.t + '&p[summary]=' + this.d + '&p[images][0]=' + this.i ;}
 		window.open('//www.facebook.com/sharer.php?m2w&' + this.fbQuery , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 	},
 	googleplus(){
@@ -71,7 +72,7 @@ var socialshare = {
 <h2>Added</h2>
 <ol>
 <li><a onclick="socialshare.twitter();">Twitter</a></li>
-<li><a onclick="socialshare.facebookshare();">facebookshare</a></li>
+<li><a onclick="socialshare.facebookshare();">facebook share</a></li>
 <li><a onclick="socialshare.googleplus();">googleplus</a></li>
 <li><a onclick="socialshare.linkedin();">linkedin</a></li>
 <li><a onclick="socialshare.pinterest();">pinterest</a></li>
