@@ -41,25 +41,25 @@ var socialshare = {
 		window.open('//www.stumbleupon.com/submit?url=' + this.u + '&title=' + this.t);
 	},
 	tumblr:function(){
-		window.open('//www.tumblr.com/share?v=3&u=' + this.u + '&t=' + this.t + '&s=' + this.d , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=450, height=440, toolbar=0, status=0');
+		window.open('//www.tumblr.com/share?v=3&u=' + this.u + '&t=' + this.t + '&s=' + this.d , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 	},
 	twitter:function(){
 		window.open('//twitter.com/intent/tweet?text=' + this.t + '&url=' + this.u , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 	},
-	buffer:function(){
+	buffer:function(e){
 		window.open('//bufferapp.com/add?text=' + this.t + '&url='+ this.u , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 	},
 	reddit:function(){
 		window.open('//reddit.com/submit?url=' + this.u + '&title=' + this.t  , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 	},
 	evernote:function(){
-		window.open('//www.evernote.com/clip.action?url=' + this.u + '&title=' + this.t  , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
+		window.open('//www.evernote.com/clip.action?url=' + this.u + '&title=' + this.t  , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=650, height=480, toolbar=0, status=0');
 	},
 	wordpress:function(){
 		window.open('//wordpress.com/press-this.php?u=' + this.u + '&t=' + this.t + '&s=' + this.d + '&i=' + this.i  , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 	},
 	pocket:function(){
-		window.open('//getpocket.com/save?url=' + this.u + '&title=' + this.t  , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
+		window.open('//getpocket.com/save?url=' + this.u + '&title=' + this.t , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 	},
 	printpage:function(){
 		window.print();
