@@ -7,11 +7,20 @@ var socialshare = {
 	u:encodeURIComponent(location.href), // URL
 	t:encodeURIComponent(document.title).replace(/\'/g, '%27'), // page title
 	d:encodeURIComponent(this.description).replace(/\'/g, '%27'),  // description
-	i:'',  // image url
+	i:encodeURIComponent(this.getImage()),  // image url
 	description:function(){
 		var meta = document.getElementsByTagName('meta');
 		for (var m = 0; m < meta.length; m++) {
 			if (meta[m].name.toLowerCase() == 'description') {
+				return meta[m].content;
+			}
+		}
+		return '';
+	},
+	getImage:function(){ //  get image from open graph
+		var meta = document.getElementsByTagName('meta');
+		for (var m = 0; m < meta.length; m++) {
+			if (meta[m].name.toLowerCase() == 'og:url') {
 				return meta[m].content;
 			}
 		}
