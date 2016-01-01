@@ -2,17 +2,12 @@
 <head></head>
 <body>
 <script type="text/javascript">
-
 var socialshare = {
-	u:encodeURIComponent(location.href), // URL
-	t:encodeURIComponent(document.title).replace(/\'/g, '%27'), // page title
-	d:encodeURIComponent(this.description).replace(/\'/g, '%27'),  // description
-	i:encodeURIComponent(this.getImage()),  // image url
 	description:function(){
 		var meta = document.getElementsByTagName('meta');
-		for (var m = 0; m < meta.length; m++) {
+		for (var m = 0; m < meta.length; m++) { 
 			if (meta[m].name.toLowerCase() == 'description') {
-				return meta[m].content;
+				return meta[m].content; 
 			}
 		}
 		return '';
@@ -20,54 +15,81 @@ var socialshare = {
 	getImage:function(){ //  get image from open graph
 		var meta = document.getElementsByTagName('meta');
 		for (var m = 0; m < meta.length; m++) {
-			if (meta[m].name.toLowerCase() == 'og:url') {
+			if( 
+			(meta[m].getAttribute('property')) && (meta[m].getAttribute('property').toLowerCase() == 'og:image')     
+			) {
 				return meta[m].content;
 			}
 		}
 		return '';
 	},
+	u:'', // URL
+	t:'', // page title
+	d:'',  // description
+	i:'',  // image url 
+	setup:function(){
+		this.u = encodeURIComponent(location.href); // URL
+		this.t = encodeURIComponent(document.title).replace(/\'/g, '%27'); // page title
+		this.d = encodeURIComponent(this.description()).replace(/\'/g, '%27');  // description
+		this.i = encodeURIComponent(this.getImage());  // image url
+		return true;
+	},
 	delicious: function(){
+		this.setup();
 		window.open('//delicious.com/save?url=' + this.u + '&title=' + this.t + '&note=' + this.d , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=710, height=660, toolbar=0, status=0');
 	},
 	digg:function(){
+		this.setup();
 		window.open('//digg.com/submit?url=' + this.u );
 	},
 	facebookshare:function(){
+		this.setup();
 		var fbQuery = 'u=' + this.u;
-		if (i != ''){fbQuery = 's=100&p[url]=' + this.u + '&p[title]=' + this.t + '&p[summary]=' + this.d + '&p[images][0]=' + this.i ;}
-		window.open('//www.facebook.com/sharer.php?m2w&' + this.fbQuery , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
+		if (this.i != ''){fbQuery = 's=100&p[url]=' + this.u + '&p[title]=' + this.t + '&p[summary]=' + this.d + '&p[images][0]=' + this.i ;}
+		window.open('//www.facebook.com/sharer.php?m2w&' + fbQuery , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 	},
 	googleplus(){
+		this.setup();
 		window.open('//plus.google.com/share?url=' + this.u , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 	},
 	linkedin:function(){
+		this.setup();
 		window.open('//www.linkedin.com/shareArticle?mini=true&url=' + this.u + '&title=' + this.t , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=600, height=400, toolbar=0, status=0');
 	},
 	pinterest:function(){
+		this.setup();
 		window.open('//pinterest.com/pin/create/button/?url=' + this.u + '&media=' + this.i + '&description=' + this.t , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=600, height=300, toolbar=0, status=0');
 	},
 	stumbleupon:function(){
+		this.setup();
 		window.open('//www.stumbleupon.com/submit?url=' + this.u + '&title=' + this.t);
 	},
 	tumblr:function(){
+		this.setup();
 		window.open('//www.tumblr.com/share?v=3&u=' + this.u + '&t=' + this.t + '&s=' + this.d , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 	},
 	twitter:function(){
+		this.setup();
 		window.open('//twitter.com/intent/tweet?text=' + this.t + '&url=' + this.u , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 	},
 	buffer:function(e){
+		this.setup();
 		window.open('//bufferapp.com/add?text=' + this.t + '&url='+ this.u , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 	},
 	reddit:function(){
+		this.setup();
 		window.open('//reddit.com/submit?url=' + this.u + '&title=' + this.t  , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 	},
 	evernote:function(){
+		this.setup();
 		window.open('//www.evernote.com/clip.action?url=' + this.u + '&title=' + this.t  , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=650, height=480, toolbar=0, status=0');
 	},
 	wordpress:function(){
+		this.setup();
 		window.open('//wordpress.com/press-this.php?u=' + this.u + '&t=' + this.t + '&s=' + this.d + '&i=' + this.i  , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 	},
 	pocket:function(){
+		this.setup();
 		window.open('//getpocket.com/save?url=' + this.u + '&title=' + this.t , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 	},
 	printpage:function(){
