@@ -48,7 +48,7 @@ var socialshare = {
 		if (this.i != ''){fbQuery = 's=100&p[url]=' + this.u + '&p[title]=' + this.t + '&p[summary]=' + this.d + '&p[images][0]=' + this.i ;}
 		window.open('//www.facebook.com/sharer.php?m2w&' + fbQuery , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 	},
-	googleplus(){
+	googleplus:function(){
 		this.setup();
 		window.open('//plus.google.com/share?url=' + this.u , '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
 	},
